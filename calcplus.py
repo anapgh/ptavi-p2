@@ -19,20 +19,19 @@ if __name__ == "__main__":
     datos = fichero.readlines()
 
     for linea in datos:
+        s = linea.split(',')
         try:
-            s = linea.split(',')
-            operacion = s[0]
-            op1 = float(s[1])
-            x = 2
-            while x != len(s):
-                op2 = float(s[x])
-                x += 1
-                calcu = calcoohija.CalculadoraHija(op1, operacion, op2)
-                resultado = calcu.operar()
-                op1 = resultado
-
-            print(resultado)
+            operacion, op1 = s[0], float(s[1])
         except ValueError:
             print("Valor introducido no valido")
+            continue
+        for op2 in s[2:]:
+            try:
+                calcu = calcoohija.CalculadoraHija(op1, operacion, float(op2))
+                resultado = calcu.operar()
+                op1 = resultado
+            except ValueError:
+                print("Valor introducido no valido")
+        print(resultado)
 
     fichero.close()
