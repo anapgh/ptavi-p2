@@ -29,20 +29,20 @@ class Calculadora():  # clase madre
         else:
             return("Operacion no valida")
 
-    if __name__ == "__main__":
-        print(sys.argv)
-        if len(sys.argv) != 4:
-            sys.exit("Usage: calcoo.py operando1 operator operando2")
+if __name__ == "__main__":
+    print(sys.argv)
+    if len(sys.argv) != 4:
+        sys.exit("Usage: calcoo.py operando1 operator operando2")
 
-        operacion = (sys.argv[2])
+    operacion = (sys.argv[2])
 
-        try:
-            operando1 = float(sys.argv[1])
-            operando2 = float(sys.argv[3])
-        except ValueError:
-            print("Solo se puede enteros y floats")
+    try:
+        operando1 = float(sys.argv[1])
+        operando2 = float(sys.argv[3])
+    except ValueError:
+        sys.exit("Solo se puede enteros y floats")
 
-        # creo mi objeto con los argumentos cogidos por pantalla
-        calcu = Calculadora(operando1, operacion, operando2)
-        resultado = calcu.operar()
-        print(resultado)
+    # creo mi objeto con los argumentos cogidos por pantalla
+    calcu = Calculadora(operando1, operacion, operando2)
+    resultado = calcu.operar()
+    print(resultado)
