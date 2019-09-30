@@ -21,19 +21,17 @@ if __name__ == "__main__":
         datos = csv.reader(csvarchivo)
         for linea in datos:
             try:
-                operacion = linea[0]
-                op1 = float(linea[1])
-                x = 2
-                while x != len(linea):
-                    op2 = float(linea[x])
-                    x += 1
-                    calcu = calcoohija.CalculadoraHija(op1, operacion, op2)
-                    resultado = calcu.operar()
-                    op1 = resultado
-
-                print(resultado)
-
+                opera, op1 = linea[0], float(linea[1])
             except ValueError:
                 print("Valor introducido no valido")
+                continue
+            for op2 in linea[2:]:
+                try:
+                    calcu = calcoohija.CalculadoraHija(op1, opera, float(op2))
+                    resultado = calcu.operar()
+                    op1 = resultado
+                except ValueError:
+                    print("Valor introducido no valido")
+            print(resultado)
 
     csvarchivo.close()
