@@ -40,7 +40,7 @@ if __name__ == "__main__":
         operando1 = float(sys.argv[1])
         operando2 = float(sys.argv[3])
     except ValueError:
-        print("Solo se puede enteros y floats")
+        sys.exit("Solo se puede enteros y floats")
 
     # creo mi objeto con los argumentos cogidos por pantalla
     calcu = CalculadoraHija(operando1, operacion, operando2)
